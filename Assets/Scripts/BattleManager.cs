@@ -10,6 +10,9 @@ public class BattleManager : MonoBehaviour
     public int cantA;
     public int cantB;
 
+    public Animator Red;
+    public Animator Blue;
+
     public bool CanPlay
     {
         get
@@ -24,10 +27,18 @@ public class BattleManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        Red.enabled = false;
+        Blue.enabled = false;
     }
 
 
-
+    public void StartBattle()
+    {
+        startBattle = true;
+        Red.enabled = true;
+        Blue.enabled = true;
+    }
 
 
 }

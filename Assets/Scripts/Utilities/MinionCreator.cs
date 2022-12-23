@@ -75,56 +75,62 @@ public class MinionCreator : MonoBehaviour
 
         if(color == 0)
         {
-            if (GUI.Button(new Rect(5, 70, 120, 20), "Add"))
-            {
-                var position = color == 0 ? bluePositions : redPositions;
-                lastCreated = Instantiate(prefab, position[index], transform.rotation);
-                lastCreated.GetComponent<Flocking>().leaderToFollow = lead.transform;
-                lastCreated.team = (EnemyTeam)color;
-                enemyList.Add(lastCreated);
-                if (index < 10) index++;
+            if (BattleManager.Instance.cantA < 10)
+                if (GUI.Button(new Rect(5, 70, 120, 20), "Add"))
+                {
+                    var position = color == 0 ? bluePositions : redPositions;
+                    lastCreated = Instantiate(prefab, position[index], transform.rotation);
+                    lastCreated.GetComponent<Flocking>().leaderToFollow = lead.transform;
+                    lastCreated.team = (EnemyTeam)color;
+                    enemyList.Add(lastCreated);
+                    if (index < 10) index++;
 
-                CheckWinnerTeam.instance.blueMembers += 1;
-                BattleManager.Instance.cantA = enemyList.Count;
-            }
-            if (GUI.Button(new Rect(5, 95, 120, 20), "Remove"))
-            {
-                enemyList.RemoveAt(enemyList.Count - 1);
-                DestroyImmediate(lastCreated.gameObject, true);
-                if (enemyList.Count > 0)
-                    lastCreated = enemyList[enemyList.Count - 1];
-                if (index > 0) index--;
+                    CheckWinnerTeam.instance.blueMembers += 1;
+                    BattleManager.Instance.cantA = enemyList.Count;
+                }
+            if (BattleManager.Instance.cantA > 0)
+                if (GUI.Button(new Rect(5, 95, 120, 20), "Remove"))
+                {
+                    enemyList.RemoveAt(enemyList.Count - 1);
+                    DestroyImmediate(lastCreated.gameObject, true);
+                    if (enemyList.Count > 0)
+                        lastCreated = enemyList[enemyList.Count - 1];
+                    if (index > 0) index--;
 
-                CheckWinnerTeam.instance.blueMembers -= 1;
-                BattleManager.Instance.cantA = enemyList.Count;
-            }
+                    CheckWinnerTeam.instance.blueMembers -= 1;
+                    BattleManager.Instance.cantA = enemyList.Count;
+                }
         }
         else
         {
             GUI.Label(new Rect(5, 130, 120, 30), "Red Team");
 
-            if (GUI.Button(new Rect(5, 150, 120, 20), "Add"))
-            {
-                var position = color == 0 ? bluePositions : redPositions;
-                lastCreated = Instantiate(prefab, position[index], transform.rotation);
-                lastCreated.GetComponent<Flocking>().leaderToFollow = lead.transform;
-                lastCreated.team = (EnemyTeam)color;
-                enemyList.Add(lastCreated);
-                if (index < 10) index++;
-                CheckWinnerTeam.instance.redMembers += 1;
-                BattleManager.Instance.cantB = enemyList.Count;
-            }
-            if (GUI.Button(new Rect(5, 175, 120, 20), "Remove"))
-            {
-                enemyList.RemoveAt(enemyList.Count - 1);
-                DestroyImmediate(lastCreated.gameObject, true);
-                if (enemyList.Count > 0)
-                    lastCreated = enemyList[enemyList.Count - 1];
-                if (index > 0) index--;
+            if (BattleManager.Instance.cantB < 10)
+                if (GUI.Button(new Rect(5, 150, 120, 20), "Add"))
+                {
+                    var position = color == 0 ? bluePositions : redPositions;
+                    lastCreated = Instantiate(prefab, position[index], transform.rotation);
+                    lastCreated.GetComponent<Flocking>().leaderToFollow = lead.transform;
+                    lastCreated.team = (EnemyTeam)color;
+                    enemyList.Add(lastCreated);
+                    if (index < 10) index++;
+                    CheckWinnerTeam.instance.redMembers += 1;
+                    BattleManager.Instance.cantB = enemyList.Count;
+                }
 
-                CheckWinnerTeam.instance.redMembers -= 1;
-                BattleManager.Instance.cantB = enemyList.Count;
-            }
+
+            if (BattleManager.Instance.cantB > 0)
+                if (GUI.Button(new Rect(5, 175, 120, 20), "Remove"))
+                {
+                    enemyList.RemoveAt(enemyList.Count - 1);
+                    DestroyImmediate(lastCreated.gameObject, true);
+                    if (enemyList.Count > 0)
+                        lastCreated = enemyList[enemyList.Count - 1];
+                    if (index > 0) index--;
+
+                    CheckWinnerTeam.instance.redMembers -= 1;
+                    BattleManager.Instance.cantB = enemyList.Count;
+                }
         }
 
 
@@ -132,7 +138,7 @@ public class MinionCreator : MonoBehaviour
         {
             if (GUI.Button(new Rect(5, 200, 120, 30), "Start Battle"))
             {
-                BattleManager.Instance.startBattle = true;
+                BattleManager.Instance.StartBattle();// = true;
             }
         }
     }
