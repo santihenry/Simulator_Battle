@@ -135,43 +135,6 @@ public class MinionCreator : MonoBehaviour
                 BattleManager.Instance.startBattle = true;
             }
         }
-
-
-
-        //GUI.Label(new Rect(5, 150, 120, 30), "Blue Team");
-
-
-        //if (GUI.Button(new Rect(5, 190, 120, 20), "Add"))
-        //{
-
-        //}
-        //if (GUI.Button(new Rect(5, 220, 120, 20), "Remove"))
-        //{
-
-        //}
-
-
-
-        //if (GUI.Button(new Rect(Screen.width * .405f, 0, 20, 20), "◄"))
-        //{
-        //    enemyList.RemoveAt(enemyList.Count - 1);
-        //    DestroyImmediate(lastCreated.gameObject, true);
-        //    if (enemyList.Count > 0)
-        //        lastCreated = enemyList[enemyList.Count - 1];
-        //    if (index > 0) index--;
-        //}
-
-
-        //if (GUI.Button(new Rect(Screen.width * .405f + 70, 0, 20, 20), "►"))
-        //{
-        //    var position = color == 0 ? bluePositions : redPositions;
-        //    lastCreated = Instantiate(prefab, position[index], transform.rotation);
-        //    lastCreated.GetComponent<Flocking>().leaderToFollow = gameObject.transform;
-        //    lastCreated.team = (EnemyTeam)color;
-        //    enemyList.Add(lastCreated);
-        //    if (index < 10) index++;
-
-        //}
     }
 
 
