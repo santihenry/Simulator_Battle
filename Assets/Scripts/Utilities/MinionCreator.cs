@@ -70,6 +70,15 @@ public class MinionCreator : MonoBehaviour
     private void OnGUI()
     {
         if (!gui) return;
+
+        //var cc = 0;
+        //foreach (var item in enemyList)
+        //{
+        //    GUI.Label(new Rect(color == 0 ? 5 : 130, 250 + cc, 120, 30), $"state: {item.currentState}", style);
+        //    cc += 35;
+        //}
+
+
         if (BattleManager.Instance.startBattle) return;
 
         styleTitle = new GUIStyle();
@@ -156,6 +165,11 @@ public class MinionCreator : MonoBehaviour
                 BattleManager.Instance.StartBattle();// = true;
             }
         }
+
+        
+
+
+
     }
 
 

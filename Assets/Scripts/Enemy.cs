@@ -115,6 +115,7 @@ public class Enemy : MonoBehaviour
         SetStateMachine();
     }
 
+    public string currentState;
     // Update is called once per frame
     void Update()
     {
@@ -185,6 +186,7 @@ public class Enemy : MonoBehaviour
     public virtual void Transitionfsm(States action)
     {
         _fsm.Transition(action);
+        currentState = _fsm.current.ToString();
     }
     public Node CurrentNode()
     {
