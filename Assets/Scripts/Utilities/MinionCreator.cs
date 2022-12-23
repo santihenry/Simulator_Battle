@@ -41,35 +41,93 @@ public class MinionCreator : MonoBehaviour
 
 
 
-    public void RemoveNPC()
+    public void RemoveNPC(int c)
     {
-        if (GUI.Button(new Rect(Screen.width * .405f, 0, 20, 20), "◄"))
-        {
-            enemyList.RemoveAt(enemyList.Count - 1);
-            DestroyImmediate(lastCreated.gameObject, true);
-            if (enemyList.Count > 0)
-                lastCreated = enemyList[enemyList.Count - 1];
-            if (index > 0) index--;
-        }
+        enemyList.RemoveAt(enemyList.Count - 1);
+        DestroyImmediate(lastCreated.gameObject, true);
+        if (enemyList.Count > 0)
+            lastCreated = enemyList[enemyList.Count - 1];
+        if (index > 0) index--;
     }
 
-    public void AddNPC()
+    public void AddNPC(int c)
     {
-        if (GUI.Button(new Rect(Screen.width * .405f + 70, 0, 20, 20), "►"))
-        {
-            var position = color == 0 ? bluePositions : redPositions;
-            lastCreated = Instantiate(prefab, position[index], transform.rotation);
-            lastCreated.GetComponent<Flocking>().leaderToFollow = gameObject.transform;
-            lastCreated.team = (EnemyTeam)color;
-            enemyList.Add(lastCreated);
-            if (index < 10) index++;
-        }
+        var position = c == 0 ? bluePositions : redPositions;
+        lastCreated = Instantiate(prefab, position[index], transform.rotation);
+        lastCreated.GetComponent<Flocking>().leaderToFollow = gameObject.transform;
+        lastCreated.team = (EnemyTeam)color;
+        enemyList.Add(lastCreated);
+        if (index < 10) index++;
     }
 
 
-
+    public bool gui;
     private void OnGUI()
     {
+        if (!gui) return;
+
+        GUI.Label(new Rect(5, 5, 120, 30), "BattleSettings");
+
+        GUI.Label(new Rect(5, 40, 120, 30), "Blue Team");
+
+        if(color == 0)
+        {
+            if (GUI.Button(new Rect(5, 70, 120, 20), "Add"))
+            {
+                var position = color == 0 ? bluePositions : redPositions;
+                lastCreated = Instantiate(prefab, position[index], transform.rotation);
+                lastCreated.GetComponent<Flocking>().leaderToFollow = gameObject.transform;
+                lastCreated.team = (EnemyTeam)color;
+                enemyList.Add(lastCreated);
+                if (index < 10) index++;
+            }
+            if (GUI.Button(new Rect(5, 95, 120, 20), "Remove"))
+            {
+                enemyList.RemoveAt(enemyList.Count - 1);
+                DestroyImmediate(lastCreated.gameObject, true);
+                if (enemyList.Count > 0)
+                    lastCreated = enemyList[enemyList.Count - 1];
+                if (index > 0) index--;
+            }
+        }
+        else
+        {
+            GUI.Label(new Rect(5, 130, 120, 30), "Red Team");
+
+            if (GUI.Button(new Rect(5, 150, 120, 20), "Add"))
+            {
+                var position = color == 0 ? bluePositions : redPositions;
+                lastCreated = Instantiate(prefab, position[index], transform.rotation);
+                lastCreated.GetComponent<Flocking>().leaderToFollow = gameObject.transform;
+                lastCreated.team = (EnemyTeam)color;
+                enemyList.Add(lastCreated);
+                if (index < 10) index++;
+            }
+            if (GUI.Button(new Rect(5, 175, 120, 20), "Remove"))
+            {
+                enemyList.RemoveAt(enemyList.Count - 1);
+                DestroyImmediate(lastCreated.gameObject, true);
+                if (enemyList.Count > 0)
+                    lastCreated = enemyList[enemyList.Count - 1];
+                if (index > 0) index--;
+            }
+        }
+
+
+
+        //GUI.Label(new Rect(5, 150, 120, 30), "Blue Team");
+
+
+        //if (GUI.Button(new Rect(5, 190, 120, 20), "Add"))
+        //{
+
+        //}
+        //if (GUI.Button(new Rect(5, 220, 120, 20), "Remove"))
+        //{
+
+        //}
+
+
 
         //if (GUI.Button(new Rect(Screen.width * .405f, 0, 20, 20), "◄"))
         //{

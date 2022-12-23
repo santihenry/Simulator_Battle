@@ -14,6 +14,7 @@ public class MinionCreatorEditor : Editor
     }
     public override void OnInspectorGUI()
     {
+
         GUI.BeginGroup(new Rect(0, 10, Screen.width, 600));
         _target.prefab = (EnemyMinion)EditorGUILayout.ObjectField("Minion", _target.prefab, typeof(EnemyMinion), true);
         GUI.BeginGroup(new Rect(18, 25, Screen.width, 600));
@@ -46,8 +47,10 @@ public class MinionCreatorEditor : Editor
         GUI.EndGroup(); 
         GUILayout.Space(40);
         _target.color = EditorGUILayout.Popup(_target.color, _target.team);
-        GUILayout.Space(50);
-        
+        GUILayout.Space(10);
+        _target.gui = EditorGUILayout.Toggle("GUI", _target.gui);
+
+
 
     }
 
