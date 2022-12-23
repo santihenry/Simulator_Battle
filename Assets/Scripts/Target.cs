@@ -6,18 +6,6 @@ public class Target : MonoBehaviour
 {
     public LayerMask node,walls;
     
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public Node CurrentNode()
     {
         Node node = new global::Node();

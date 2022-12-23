@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyMinion : Enemy
 {
-    // Start is called before the first frame update
      FollowLeader<States> _followLeader;
      chasing<States> _chasing;
      Attacking<States> _attacking;
@@ -49,7 +48,6 @@ public class EnemyMinion : Enemy
         SetStateMachine();
     }
 
-    // Update is called once per frame
     void Update()
     {
 

@@ -305,7 +305,7 @@ public class Enemy : MonoBehaviour
 
         return possiblePoints[targetIndex];
     } //el angulo mas cercano al enemigo si tengo que girar al esquivar un obstaculo
-    public Enemy ClosestEnemy(bool goToEnemy, float distanceToEscape=10) //goToEnemy determina si debo escapar o ir hacia el enemigo
+    public Enemy ClosestEnemy(bool goToEnemy, float distanceToEscape=10) // determina si debo escapar o ir hacia el enemigo
     {
 
             var nearEnemies = Physics.OverlapSphere(transform.position, closestEnemy, enemies);
@@ -557,9 +557,11 @@ public class Enemy : MonoBehaviour
 
 
         }
+
         Gizmos.DrawRay(transform.position + new Vector3(0, verticalOffset * height), Quaternion.AngleAxis(angleVision / 2, Vector3.up) * transform.forward * rangeVision);
         Gizmos.DrawRay(transform.position + new Vector3(0, verticalOffset * height), Quaternion.AngleAxis(-angleVision / 2, Vector3.up) * transform.forward * rangeVision);
         Gizmos.DrawWireSphere(transform.position, obstacleAvoidance);
+
         Vector3[] directions = new Vector3[5] 
         {
             (transform.forward),
