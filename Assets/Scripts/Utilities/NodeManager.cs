@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class NodeManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     public int x;
     public int y;
     public Node node;
@@ -21,11 +20,6 @@ public class NodeManager : MonoBehaviour
         _instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public GameObject father { get { return _father; } }
 
     public void GenerateNodes()

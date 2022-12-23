@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 [ExecuteInEditMode]
 public class Node : MonoBehaviour
 {
@@ -14,11 +15,6 @@ public class Node : MonoBehaviour
     
     public bool debug {set{_gizmos=value;}}
     
-    private void Start()
-    {
-
-        
-    }
     public void Create()
     {
         
@@ -28,6 +24,7 @@ public class Node : MonoBehaviour
         if (IsWall) GetComponent<Collider>().enabled = false;
         else GetComponent<Collider>().enabled = true;
     }
+
     public void GetNeighbours()
     {
         GetNeightbourd(Vector3.right);
@@ -40,11 +37,8 @@ public class Node : MonoBehaviour
     {
         neighbours.Clear();
     }
-    private void Update()
-    {
-      
 
-    }
+
     void GetNeightbourd(Vector3 dir )
     {
         RaycastHit hit;
@@ -73,23 +67,13 @@ public class Node : MonoBehaviour
             else Gizmos.color = Color.black;
             Gizmos.DrawCube(transform.position, Vector3.one * size);
         }
-        //Gizmos.DrawRay(transform.position, Vector3.right * distance);
-
-        //Gizmos.DrawRay(transform.position, Vector3.left * distance);
-
-        //Gizmos.DrawRay(transform.position, Vector3.forward * distance);
-
-        //Gizmos.DrawRay(transform.position, Vector3.back * distance);
-        //Gizmos.DrawCube(transform.position, Vector3.one/5);
-        //Gizmos.DrawWireCube(transform.position, Vector3.one * 0.4f);
 
     }
+
     private void OnDrawGizmosSelected()
     {
         if (_gizmos)
         {
-
-
             Gizmos.DrawRay(transform.position, Vector3.right * distance);
 
             Gizmos.DrawRay(transform.position, Vector3.left * distance);

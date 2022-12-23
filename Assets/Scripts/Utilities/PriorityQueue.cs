@@ -65,8 +65,8 @@ public class PriorityQueue<TData>
     {
         data.Add(dp);
 
-        int currentIndex = data.Count - 1;//La posicion del dato recien ingresado en la lista.
-        int parentIndex = (currentIndex - 1) / 2; //La posicion del nodo padre en la lista. 
+        int currentIndex = data.Count - 1;
+        int parentIndex = (currentIndex - 1) / 2; 
 
         indexes.Add(dp.Item1, currentIndex);
 

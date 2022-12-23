@@ -15,7 +15,7 @@ public class RoulleteWheel<T>
     public T ProbabilityCalculator(List<Tuple<int,T>> list)
     {
         int dropChance = UnityEngine.Random.Range(0, 101);
-        if (dropChance >ProbabilityToDropSomething)
+        if (dropChance > ProbabilityToDropSomething)
         {
             return default(T);
         }

@@ -78,7 +78,6 @@ public class MinionCreator : MonoBehaviour
         //    cc += 35;
         //}
 
-
         if (BattleManager.Instance.startBattle) return;
 
         styleTitle = new GUIStyle();
@@ -162,7 +161,7 @@ public class MinionCreator : MonoBehaviour
         {
             if (GUI.Button(new Rect(5, 230, 120, 30), "Start Battle"))
             {
-                BattleManager.Instance.StartBattle();// = true;
+                BattleManager.Instance.StartBattle();
             }
         }
 

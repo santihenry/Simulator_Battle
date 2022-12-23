@@ -12,12 +12,14 @@ public class StateMachine<T>
         _current = initialize;
         _current.OnEnter();
     }
-    //Actualizamos el estado
+
+
     public void OnUpdate()
     {
        _current.OnUpdate();
     }
-    //Realizamos la transicion
+
+
     public void Transition(T input)
     {
     
