@@ -64,17 +64,29 @@ public class MinionCreator : MonoBehaviour
 
 
     public bool gui;
+    GUIStyle styleBlue;
+    GUIStyle style;
+    GUIStyle styleTitle;
     private void OnGUI()
     {
         if (!gui) return;
         if (BattleManager.Instance.startBattle) return;
 
-        GUI.Label(new Rect(5, 5, 120, 30), "BattleSettings");
+        styleTitle = new GUIStyle();
+        styleTitle.normal.textColor = Color.black;
+        styleTitle.fontSize = 30;
 
-        GUI.Label(new Rect(5, 40, 120, 30), "Blue Team");
+        GUI.Label(new Rect(5, 5, 120, 30), "BattleSettings",styleTitle);
+
+        style = new GUIStyle();
+        style.fontSize = 20;
 
         if(color == 0)
         {
+            style.normal.textColor = Color.blue;
+
+            GUI.Label(new Rect(5, 40, 120, 30), "Blue Team", style);
+
             if (BattleManager.Instance.cantA < 10)
                 if (GUI.Button(new Rect(5, 70, 120, 20), "Add"))
                 {
@@ -88,6 +100,7 @@ public class MinionCreator : MonoBehaviour
                     CheckWinnerTeam.instance.blueMembers += 1;
                     BattleManager.Instance.cantA = enemyList.Count;
                 }
+
             if (BattleManager.Instance.cantA > 0)
                 if (GUI.Button(new Rect(5, 95, 120, 20), "Remove"))
                 {
@@ -103,10 +116,12 @@ public class MinionCreator : MonoBehaviour
         }
         else
         {
-            GUI.Label(new Rect(5, 130, 120, 30), "Red Team");
+            style.normal.textColor = Color.red;
+
+            GUI.Label(new Rect(5, 130, 120, 30), "Red Team", style);
 
             if (BattleManager.Instance.cantB < 10)
-                if (GUI.Button(new Rect(5, 150, 120, 20), "Add"))
+                if (GUI.Button(new Rect(5, 160, 120, 20), "Add"))
                 {
                     var position = color == 0 ? bluePositions : redPositions;
                     lastCreated = Instantiate(prefab, position[index], transform.rotation);
@@ -120,7 +135,7 @@ public class MinionCreator : MonoBehaviour
 
 
             if (BattleManager.Instance.cantB > 0)
-                if (GUI.Button(new Rect(5, 175, 120, 20), "Remove"))
+                if (GUI.Button(new Rect(5, 185, 120, 20), "Remove"))
                 {
                     enemyList.RemoveAt(enemyList.Count - 1);
                     DestroyImmediate(lastCreated.gameObject, true);
@@ -136,7 +151,7 @@ public class MinionCreator : MonoBehaviour
 
         if (BattleManager.Instance.CanPlay)
         {
-            if (GUI.Button(new Rect(5, 200, 120, 30), "Start Battle"))
+            if (GUI.Button(new Rect(5, 230, 120, 30), "Start Battle"))
             {
                 BattleManager.Instance.StartBattle();// = true;
             }

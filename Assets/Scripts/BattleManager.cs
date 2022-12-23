@@ -41,7 +41,7 @@ public class BattleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            QuitGame();
         }
     }
 
@@ -62,6 +62,10 @@ public class BattleManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 
 
 }
