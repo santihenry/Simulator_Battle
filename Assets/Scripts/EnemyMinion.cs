@@ -50,10 +50,11 @@ public class EnemyMinion : Enemy
     }
 
     // Update is called once per frame
-     void Update()
+    void Update()
     {
 
         if (dummy) return;
+        if (!BattleManager.Instance.startBattle) return;
 
         barLife.value = life;
 

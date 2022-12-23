@@ -21,6 +21,8 @@ public class CheckWinnerTeam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!BattleManager.Instance.startBattle) return;
+
         if (blueMembers <= 0)
         {
             winText.text = "RED TEAM WINS";

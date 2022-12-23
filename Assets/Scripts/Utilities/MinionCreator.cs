@@ -10,6 +10,8 @@ public class MinionCreator : MonoBehaviour
     public int index=0;
     public int color;
     public string[] team = new string[2] { "blue", "red" };
+    public GameObject lead;
+
     public Vector3[] bluePositions = new Vector3[10]
     {
         new Vector3(27.874f,0,59.4f),
@@ -77,11 +79,12 @@ public class MinionCreator : MonoBehaviour
             {
                 var position = color == 0 ? bluePositions : redPositions;
                 lastCreated = Instantiate(prefab, position[index], transform.rotation);
-                lastCreated.GetComponent<Flocking>().leaderToFollow = gameObject.transform;
+                lastCreated.GetComponent<Flocking>().leaderToFollow = lead.transform;
                 lastCreated.team = (EnemyTeam)color;
                 enemyList.Add(lastCreated);
                 if (index < 10) index++;
 
+                CheckWinnerTeam.instance.blueMembers += 1;
                 BattleManager.Instance.cantA = enemyList.Count;
             }
             if (GUI.Button(new Rect(5, 95, 120, 20), "Remove"))
@@ -92,6 +95,7 @@ public class MinionCreator : MonoBehaviour
                     lastCreated = enemyList[enemyList.Count - 1];
                 if (index > 0) index--;
 
+                CheckWinnerTeam.instance.blueMembers -= 1;
                 BattleManager.Instance.cantA = enemyList.Count;
             }
         }
@@ -103,11 +107,11 @@ public class MinionCreator : MonoBehaviour
             {
                 var position = color == 0 ? bluePositions : redPositions;
                 lastCreated = Instantiate(prefab, position[index], transform.rotation);
-                lastCreated.GetComponent<Flocking>().leaderToFollow = gameObject.transform;
+                lastCreated.GetComponent<Flocking>().leaderToFollow = lead.transform;
                 lastCreated.team = (EnemyTeam)color;
                 enemyList.Add(lastCreated);
                 if (index < 10) index++;
-
+                CheckWinnerTeam.instance.redMembers += 1;
                 BattleManager.Instance.cantB = enemyList.Count;
             }
             if (GUI.Button(new Rect(5, 175, 120, 20), "Remove"))
@@ -118,6 +122,7 @@ public class MinionCreator : MonoBehaviour
                     lastCreated = enemyList[enemyList.Count - 1];
                 if (index > 0) index--;
 
+                CheckWinnerTeam.instance.redMembers -= 1;
                 BattleManager.Instance.cantB = enemyList.Count;
             }
         }
