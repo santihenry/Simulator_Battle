@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+
 [ExecuteInEditMode]
 [CustomEditor(typeof(NodeManager))]
 public class NodesEditor : Editor
@@ -12,8 +13,8 @@ public class NodesEditor : Editor
     private void OnEnable()
     {
         _target = (NodeManager)target;
-
     }
+
     public override void OnInspectorGUI()
     {
         _target.node = (Node)EditorGUILayout.ObjectField("Node", _target.node,typeof(Node),true);
