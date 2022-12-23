@@ -8,6 +8,7 @@ public class BattleManager : MonoBehaviour
     public static BattleManager Instance;
 
     public bool startBattle;
+    public bool finishBattle;
     public int cantA;
     public int cantB;
 
@@ -54,6 +55,11 @@ public class BattleManager : MonoBehaviour
     {
         Red.enabled = true;
         Blue.enabled = true;
+    }
+
+    public void Replay()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 
