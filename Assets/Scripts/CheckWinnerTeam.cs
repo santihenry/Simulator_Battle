@@ -27,7 +27,7 @@ public class CheckWinnerTeam : MonoBehaviour
         if (blueMembers <= 0 || redMembers <= 0)
         {
             style.normal.textColor = (blueMembers > redMembers) ? Color.blue : Color.red;
-            GUI.Label(new Rect(Screen.width / 2, 50, 200, 50), (blueMembers > redMembers)  ? "BLUE WIN" : "RED WIN", style);
+            GUI.Label(new Rect(Screen.width / 2, 70, 200, 50), (blueMembers > redMembers)  ? "BLUE WIN" : "RED WIN", style);
             BattleManager.Instance.finishBattle = true;
         }
 
