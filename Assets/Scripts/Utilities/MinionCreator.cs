@@ -65,6 +65,7 @@ public class MinionCreator : MonoBehaviour
     private void OnGUI()
     {
         if (!gui) return;
+        if (BattleManager.Instance.startBattle) return;
 
         GUI.Label(new Rect(5, 5, 120, 30), "BattleSettings");
 
@@ -80,6 +81,8 @@ public class MinionCreator : MonoBehaviour
                 lastCreated.team = (EnemyTeam)color;
                 enemyList.Add(lastCreated);
                 if (index < 10) index++;
+
+                BattleManager.Instance.cantA = enemyList.Count;
             }
             if (GUI.Button(new Rect(5, 95, 120, 20), "Remove"))
             {
@@ -88,6 +91,8 @@ public class MinionCreator : MonoBehaviour
                 if (enemyList.Count > 0)
                     lastCreated = enemyList[enemyList.Count - 1];
                 if (index > 0) index--;
+
+                BattleManager.Instance.cantA = enemyList.Count;
             }
         }
         else
@@ -102,6 +107,8 @@ public class MinionCreator : MonoBehaviour
                 lastCreated.team = (EnemyTeam)color;
                 enemyList.Add(lastCreated);
                 if (index < 10) index++;
+
+                BattleManager.Instance.cantB = enemyList.Count;
             }
             if (GUI.Button(new Rect(5, 175, 120, 20), "Remove"))
             {
@@ -110,6 +117,17 @@ public class MinionCreator : MonoBehaviour
                 if (enemyList.Count > 0)
                     lastCreated = enemyList[enemyList.Count - 1];
                 if (index > 0) index--;
+
+                BattleManager.Instance.cantB = enemyList.Count;
+            }
+        }
+
+
+        if (BattleManager.Instance.CanPlay)
+        {
+            if (GUI.Button(new Rect(5, 200, 120, 30), "Start Battle"))
+            {
+                BattleManager.Instance.startBattle = true;
             }
         }
 
