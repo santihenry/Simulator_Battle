@@ -56,4 +56,6 @@ public class BattleManager : MonoBehaviour
         Blue.enabled = true;
     }
 
+
+
 }
