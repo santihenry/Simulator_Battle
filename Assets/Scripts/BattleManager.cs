@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class BattleManager : MonoBehaviour
 
     public Animator Red;
     public Animator Blue;
+
+    public float closeDoorDelay;
 
     public bool CanPlay
     {
@@ -33,12 +36,24 @@ public class BattleManager : MonoBehaviour
     }
 
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
     public void StartBattle()
     {
         startBattle = true;
+        Invoke("CloseDoor", closeDoorDelay);
+    }
+
+    void CloseDoor()
+    {
         Red.enabled = true;
         Blue.enabled = true;
     }
-
 
 }
